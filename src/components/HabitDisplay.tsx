@@ -3,8 +3,8 @@ import { useSwipeable } from "react-swipeable";
 import localforage from "localforage";
 import { useNavigate } from "react-router-dom";
 import { Habit } from "../types/Habit";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const HabitItem: React.FC<{
   habit: Habit;
@@ -49,7 +49,6 @@ const HabitDisplay: React.FC = () => {
     loadHabits();
   }, [navigate]);
 
-  console.log("habits", habits);
   const canAddMoreHabits = habits.every((habit) => habit.consecutiveDays >= 21);
 
   const handleAddMoreClick = () => {
@@ -59,7 +58,18 @@ const HabitDisplay: React.FC = () => {
   const handleSwipeRight = (index: number) => {
     setHabits((prevHabits) => {
       const updatedHabits = [...prevHabits];
-      updatedHabits[index].consecutiveDays += 1; // Mark as performed by incrementing consecutive days
+      const today = new Date().toDateString();
+      const lastTrackedDate = updatedHabits[index].lastTrackedDate;
+      const lastTracked = lastTrackedDate
+        ? new Date(lastTrackedDate).toDateString()
+        : null;
+
+      if (lastTracked !== today) {
+        updatedHabits[index].consecutiveDays += 1;
+        updatedHabits[index].lastTrackedDate = new Date();
+        localforage.setItem("habits", updatedHabits);
+      }
+
       return updatedHabits;
     });
   };

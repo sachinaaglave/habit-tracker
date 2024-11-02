@@ -34,6 +34,7 @@ const HabitInput: React.FC = () => {
         image,
         consecutiveDays: 0,
         isActive: true,
+        lastTrackedDate: null,
       };
 
       const existingHabits = (await localforage.getItem<Habit[]>('habits')) || [];
