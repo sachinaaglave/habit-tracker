@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import HabitInput from './components/HabitInput';
-import HabitDisplay from './components/HabitDisplay';
-import localforage from 'localforage';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import HabitInput from "./components/HabitInput";
+import HabitDisplay from "./components/HabitDisplay";
 
 const App: React.FC = () => {
-  const [isHabitSet, setIsHabitSet] = useState(false);
-
-  useEffect(() => {
-    const checkHabit = async () => {
-      const habit = await localforage.getItem('habit');
-      setIsHabitSet(!!habit);
-    };
-    checkHabit();
-  }, []);
-
   return (
     <div className="App">
-      {isHabitSet ? <HabitDisplay /> : <HabitInput />}
+      <Routes>
+        <Route path="/" element={<HabitInput />} />
+        <Route path="/display" element={<HabitDisplay />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </div>
   );
 };
