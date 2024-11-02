@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/habit-tracker/static/css/main.e6c13ad2.css",
-    "main.js": "/habit-tracker/static/js/main.919301ee.js",
+    "main.css": "/habit-tracker/static/css/main.e88ef3dd.css",
+    "main.js": "/habit-tracker/static/js/main.075710bc.js",
     "index.html": "/habit-tracker/index.html",
-    "main.e6c13ad2.css.map": "/habit-tracker/static/css/main.e6c13ad2.css.map",
-    "main.919301ee.js.map": "/habit-tracker/static/js/main.919301ee.js.map"
+    "main.e88ef3dd.css.map": "/habit-tracker/static/css/main.e88ef3dd.css.map",
+    "main.075710bc.js.map": "/habit-tracker/static/js/main.075710bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.919301ee.js"
+    "static/css/main.e88ef3dd.css",
+    "static/js/main.075710bc.js"
   ]
 }
