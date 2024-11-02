@@ -3,6 +3,8 @@ import { useSwipeable } from "react-swipeable";
 import localforage from "localforage";
 import { useNavigate } from "react-router-dom";
 import { Habit } from "../types/Habit";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const HabitItem: React.FC<{
   habit: Habit;
@@ -20,7 +22,10 @@ const HabitItem: React.FC<{
         alt={habit.name}
         className="w-full rounded"
       />
-      <p>{habit.name}</p>
+      <p>
+        <FontAwesomeIcon icon={faCheckCircle} className="mr-2" />
+        {habit.name}
+      </p>
       <p>Consecutive Days: {habit.consecutiveDays}</p>
       <p>Status: {habit.isActive ? "Active" : "Disabled"}</p>
     </div>
